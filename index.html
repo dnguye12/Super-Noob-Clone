@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body onload="javascript:subscribeToWebSocket()"><audio id="audio" src="assets/buttonclick.mp3" muted="" autoplay="false"></audio>
+  
+    <audio autoplay="" loop="">
+      <source src="assets/default.mp3" type="audio/mpeg">
+    </audio>
+  <!--//- Menu-->
+  <div>
+    
+    
+    <video playsinline="" autoplay="" muted="" loop="" poster="assets/background.png" id="bgvid">
+      <source src="assets/background.mp4" type="video/mp4">
+    </video>
+    <center><img src="assets/logo.png" style="height: 150px;">
+    </center></div>
+    <br><br><br><br><br>
+
+<div class="mc-menu">
+  
+  <div class="mc-button full">
+    <div class="title" onclick="playSound(1);location.href = 'soon/soon.html'">About us</div>
+  </div>
+  <div class="mc-button full">
+    <div class="title" onclick="playSound(1); location.href = 'map/map.html'">Multiplayer Map</div>
+  </div>
+  <div class="mc-button full">
+    <div class="title" onclick="playSound(1);location.href = 'https://discord.gg/hvrpPxFz9f'">Minecraft Forum</div>
+  </div>
+  <div class="double">
+    <div class="mc-button full">
+      <div class="title" onclick="playSound(1);location.href = 'https://supernoob.tebex.io/'">Donate</div>
+    </div>
+    <div class="mc-button full">
+      <div class="title" onclick="playSound(1);location.href = 'soon/soon.html'">Vote</div>
+    </div>
+  </div>
+  <div class="mc-button full lang" onclick="playSound(1); location.href = 'https://discord.gg/hvrpPxFz9f'">
+    <div class="title"><img src="assets/discord.png" alt=" Lang"></div>
+  </div>
+</div>
+<h1 class="mcfont" style="color:white;
+left: 1%;
+position: absolute;
+bottom: 1%;
+font-size:18px;">Minecraft 1.19 Server</h1>
+<a class="mcfont" style="color:white;
+right: 1%;
+text-align: right;
+position: absolute;
+bottom: 1%;
+font-size:18px;" href="https://iplogger.org/2NZAx7.gif">Do not click here</a>
+
+  <script>
+
+
+      
+      /*
+        function execute(command) {
+  const exec = require('child_process').exec
+
+  exec(command, (err, stdout, stderr) => {
+    process.stdout.write(stdout)
+  })
+}
+*/
+var socket;
+function subscribeToWebSocket(){
+        if('WebSocket' in window){
+          socket = new WebSocket('ws://localhost:4444/websocket-echo/');
+          socket.onopen = function(){
+            showMessage('Connected to WebSocket.');
+          };
+          socket.onmessage = function(msg){
+            showMessage(msg.data);
+          };
+          socket.onerror = function(msg){
+            showMessage('Sorry but there was an error.');
+          };
+          socket.onclose = function(){
+            showMessage('Server offline.');
+          };
+        }else{
+          showMessage('Your browser does not support HTML5 WebSockets.');
+        }
+      }
+ 
+      function sendMessage(){
+        var message = document.getElementById('userInput').value;
+        socket.send(message);
+      }
+ 
+      function showMessage(text) {
+        document.getElementById('message').innerHTML = text;
+      }
+ 
+      
+/*connection.send('Ping');*/
+      function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+
+}
+
+function playSound(x) {
+    var sound = document.getElementById("audio");
+          sound.play();
+          sound.muted = !sound.muted;
+          wait(400);
+  }
+  /*
+  function hi() {
+ execute('screen -S supernoob -X stuff "say Hi"`echo -ne "\\015"`');
+ }
+ */
+
+
+
+</script>
+
+
+
+</body>
+</html>
