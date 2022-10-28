@@ -1,71 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Super Noob Clone</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Noob Clone</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <audio id="audio" src="assets/Button.mp3" muted autoplay="false"></audio>
-    <audio id="music" autoplay loop>
-        <source src="assets/Music.mp3">
-    </audio>
 
     <div>
         <video playsinline="" autoplay="" muted="" loop="" id="bgvid">
             <source src="assets/video.mp4" type="video/mp4">
-          </video>
+        </video>
     </div>
 
     <main>
         <img src="assets/logo.png" id="logo" alt="logo">
 
         <div class="mc-menu">
-  
+
             <div class="mc-button full">
-              <div class="title"><span>Singleplayer</span></div>
+                <div class="title" onclick="audio.play();"><span>Singleplayer</span></div>
             </div>
             <div class="mc-button full">
-              <div class="title"><span>Multiplayer</span></div>
+                <div class="title" onclick="audio.play();"><span>Multiplayer</span></div>
             </div>
             <div class="mc-button full">
-              <div class="title"><span>Minecraft Realms</span></div>
+                <div class="title" onclick="audio.play();"><span>Minecraft Realms</span></div>
             </div>
             <div class="double">
-              <div class="mc-button full">
-                <div class="title"><span>Options</span></div>
-              </div>
-              <div class="mc-button full">
-                <div class="title"><span>Exit Game</span></div>
-              </div>
+                <div class="mc-button full">
+                    <div class="title" onclick="audio.play();"><span>Options</span></div>
+                </div>
+                <div class="mc-button full">
+                    <div class="title" onclick="audio.play();"><span>Exit Game</span></div>
+                </div>
             </div>
             <div class="mc-button full lang">
-              <div class="title"><img src="assets/discord.png" alt=" Lang"></div>
+                <div class="title" onclick="audio.play();"><img src="assets/discord.png" alt=" Lang"></div>
             </div>
-          </div>
+        </div>
+        <div class="footer">
+            <h1>Minecraft 1.19.2</h1>
+        </div>
     </main>
-    
 </body>
 <script>
-    let audio = document.getElementById("audio");
-    let btns = document.querySelectorAll(".mc-button");
-    function wait(ms){
-   var start = new Date().getTime();
-   var end = start;
-   while(end < start + ms) {
-     end = new Date().getTime();
-  }
+    
 
-}
-    btns.forEach(e => {
-        e.addEventListener("click", () => {
-            audio.play();
-            audio.muted = !audio.muted;
-            wait(400);
-            audio.muted = !audio.muted;
-        })
-    });
+    let btns = document.querySelectorAll(".mc-button");
+    const audio = new Audio();
+    audio.src = "assets/Button.mp3";
 </script>
+
 </html>
